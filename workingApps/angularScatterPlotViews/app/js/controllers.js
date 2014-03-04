@@ -12,7 +12,7 @@ google.setOnLoadCallback(function() {
 });
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', ['$scope', 
+  controller('costVsPerformanceCtrl', ['$scope', 
   	function($scope) {
       var data = google.visualization.arrayToDataTable([
         ['Cost', 'Performance', 'SystemDesign'],
@@ -40,23 +40,11 @@ angular.module('myApp.controllers', []).
 
       chart.data = data;
       chart.options = options;
-      // This is for the select dropdown box
-      $scope.chartTypes = [ 
-      	{typeName: 'ScatterPlot', typeValue: '1'},
-      ];
-      // Sets a default value for the select box
-      $scope.chartType = $scope.chartTypes[0];
-      // ng-change expression
-      $scope.selectType = function(type) {
-      	$scope.chart.type = type.typeValue;
-      }
-
-      chart.type = $scope.chartTypes[0].typeValue;
 
       $scope.chart = chart;
   	}	
   ])
-	.controller('MyCtrl2', ['$scope', 
+	.controller('costVsReliabilityCtrl', ['$scope', 
     function($scope) {
       var data = google.visualization.arrayToDataTable([
         ['Cost', 'Reliability', 'SystemDesign'],
@@ -85,23 +73,11 @@ angular.module('myApp.controllers', []).
       chart.data = data;
       chart.options = options;
 
-      $scope.chartTypes = [
-        {typeName: 'ScatterPlot', typeValue: '1'},
-      ];
-
-      $scope.chartType = $scope.chartTypes[0];
-
-      $scope.selectType = function(type) {
-        $scope.chart.type = type.typeValue;
-      }
-
-      chart.type = $scope.chartTypes[0].typeValue;
-
       $scope.chart = chart;
 
   	}
   ])
-  .controller('MyCtrl3', ['$scope', 
+  .controller('reliabilityVsPerformanceCtrl', ['$scope', 
     function($scope) {
       var data = google.visualization.arrayToDataTable([
         ['Performance', 'Reliability', 'SystemDesign'],
@@ -129,18 +105,6 @@ angular.module('myApp.controllers', []).
 
       chart.data = data;
       chart.options = options;
-
-      $scope.chartTypes = [
-        {typeName: 'ScatterPlot', typeValue: '1'},
-      ];
-
-      $scope.chartType = $scope.chartTypes[0];
-
-      $scope.selectType = function(type) {
-        $scope.chart.type = type.typeValue;
-      }
-
-      chart.type = $scope.chartTypes[0].typeValue;
 
       $scope.chart = chart;
     }

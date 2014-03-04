@@ -14,14 +14,8 @@ angular.module('myApp.directives', []).
   		restrict: 'A',
   		link: function($scope, elm, attrs) {
   			$scope.$watch('chart', function() {
-  				var type = $scope.chart.type;
-  				var chart = '';
-
-  				if (type == '1') {
-  					chart = new google.visualization.ScatterChart(elm[0]);
-  				}
-
-  				chart.draw($scope.chart.data, $scope.chart.options);
+          var chart = new google.visualization.ScatterChart(elm[0]);
+          chart.draw($scope.chart.data, $scope.chart.options)
   			}, true);
   		}
   	}
