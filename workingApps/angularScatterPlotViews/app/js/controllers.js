@@ -11,8 +11,9 @@ google.setOnLoadCallback(function() {
   angular.bootstrap(document.body, ['myApp']);
 });
 
-angular.module('myApp.controllers', []).
-  controller('costVsPerformanceCtrl', ['$scope', 
+var myAppControllers = angular.module('myAppControllers', []);
+
+myAppControllers.controller('costVsPerformanceCtrl', ['$scope', 
   	function($scope) {
       var data = google.visualization.arrayToDataTable([
         ['Cost', 'Performance', 'SystemDesign'],
@@ -43,8 +44,9 @@ angular.module('myApp.controllers', []).
 
       $scope.chart = chart;
   	}	
-  ])
-	.controller('costVsReliabilityCtrl', ['$scope', 
+  ]);
+
+myAppControllers.controller('costVsReliabilityCtrl', ['$scope', 
     function($scope) {
       var data = google.visualization.arrayToDataTable([
         ['Cost', 'Reliability', 'SystemDesign'],
@@ -76,8 +78,9 @@ angular.module('myApp.controllers', []).
       $scope.chart = chart;
 
   	}
-  ])
-  .controller('reliabilityVsPerformanceCtrl', ['$scope', 
+  ]);
+
+myAppControllers.controller('reliabilityVsPerformanceCtrl', ['$scope', 
     function($scope) {
       var data = google.visualization.arrayToDataTable([
         ['Performance', 'Reliability', 'SystemDesign'],
