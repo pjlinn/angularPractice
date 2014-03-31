@@ -13,9 +13,24 @@ google.setOnLoadCallback(function() {
 
 var myAppControllers = angular.module('myAppControllers', []);
 
+myAppControllers.controller('systemDesignCtrl', ['$scope', '$http', 
+  function($scope, $http) {
+    $http.get('data/systemDesigns.json').success(function(data) {
+     $scope.systemDesigns = data;
+  });
+}]);
+
+myAppControllers.controller('dynamicChartCtrl', ['$scope', '$http',
+  function($scope, $http) {
+    function drawVisualization() {
+      google.visualization.drawChart
+    }
+  }]);
+
 myAppControllers.controller('costVsPerformanceCtrl', ['$scope', 
   	function($scope) {
-      var data = google.visualization.arrayToDataTable([
+
+      var iData = google.visualization.arrayToDataTable([
         ['Cost', 'Performance', 'SystemDesign'],
         [ 2000,      23,    'Design 1'],
         [ 1928,      25,    'Design 2'],
@@ -28,7 +43,7 @@ myAppControllers.controller('costVsPerformanceCtrl', ['$scope',
         [ 1878,      28,    'Design 9']
       ]);
 
-      data.setColumnProperty(2, 'role', 'tooltip');
+      iData.setColumnProperty(2, 'role', 'tooltip');
 
       var options = {
         title: 'Cost vs. Performance Comparison',
@@ -39,12 +54,12 @@ myAppControllers.controller('costVsPerformanceCtrl', ['$scope',
 
       var chart = {};
 
-      chart.data = data;
+      chart.data = iData;
       chart.options = options;
 
       $scope.chart = chart;
-  	}	
-  ]);
+
+  }]);
 
 myAppControllers.controller('costVsReliabilityCtrl', ['$scope', 
     function($scope) {
